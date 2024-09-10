@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: gokapi-config
 data:
-  cloudconfig.yml: |
+  cloudconfig.yml.template: |
     aws:
       Bucket: ${AWS_BUCKET}
       Region: ${AWS_REGION}
@@ -12,7 +12,7 @@ data:
       KeySecret: ${AWS_KEY_SECRET}
       Endpoint: ""
       ProxyDownload: false
-  config.json: |
+  config.json.template: |
     {
       "Authentication": {
         "Method": 0,
