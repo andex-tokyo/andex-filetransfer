@@ -3,7 +3,7 @@ services:
   gokapi:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./Dockerfile
     container_name: gokapi
     volumes:
       - gokapi-data:/app/data
