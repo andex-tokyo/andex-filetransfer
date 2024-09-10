@@ -1,4 +1,21 @@
-# static
+# PersistentVolume for gokapi-static
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gokapi-static-pv
+spec:
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  hostPath:
+    path: "/Users/yuki/kubernetes-volumes/static"
+
+---
+
+# PersistentVolumeClaim for gokapi-static
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -9,10 +26,28 @@ spec:
   resources:
     requests:
       storage: 100Mi
+  storageClassName: local-storage
 
 ---
 
-# templates
+# PersistentVolume for gokapi-templates
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gokapi-templates-pv
+spec:
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  hostPath:
+    path: "/Users/yuki/kubernetes-volumes/templates"
+
+---
+
+# PersistentVolumeClaim for gokapi-templates
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -23,9 +58,28 @@ spec:
   resources:
     requests:
       storage: 100Mi
+  storageClassName: local-storage
 
 ---
-# pvc
+
+# PersistentVolume for gokapi-data
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gokapi-data-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  hostPath:
+    path: "/Users/yuki/kubernetes-volumes/data"
+
+---
+
+# PersistentVolumeClaim for gokapi-data
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -36,3 +90,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
+  storageClassName: local-storage
