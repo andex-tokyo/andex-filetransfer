@@ -26,9 +26,9 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: github-credentials
-                  key: token
+                  key: GITHUB_TOKEN
             - name: GITHUB_USERNAME
-              value: "your-github-username"
+              value: "andex-tokyo"
           volumeMounts:
             - name: gokapi-static
               mountPath: /app/static
