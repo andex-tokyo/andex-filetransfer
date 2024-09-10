@@ -1,0 +1,38 @@
+# static
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gokapi-static-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+
+---
+
+# templates
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gokapi-templates-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+
+---
+# pvc
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gokapi-data-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

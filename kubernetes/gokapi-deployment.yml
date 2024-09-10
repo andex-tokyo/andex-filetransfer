@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gokapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gokapi
+  template:
+    metadata:
+      labels:
+        app: gokapi
+    spec:
+      initContainers:
+        - name: init-static-templates
+          image: alpine/git
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              git clone https://$(GITHUB_USERNAME):$(GITHUB_TOKEN)@github.com/your-username/your-repo.git /git-data &&
+              cp -r /git-data/static/* /app/static/ &&
+              cp -r /git-data/templates/* /app/templates/
+          env:
+            - name: GITHUB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: github-credentials
+                  key: token
+            - name: GITHUB_USERNAME
+              value: "your-github-username"
+          volumeMounts:
+            - name: gokapi-static
+              mountPath: /app/static
+            - name: gokapi-templates
+              mountPath: /app/templates
+
+      containers:
+        - name: gokapi
+          image: f0rc3/gokapi:latest
+          ports:
+            - containerPort: 53842
+              hostPort: 53842
+              hostIP: 127.0.0.1
+          envFrom:
+            - secretRef:
+                name: gokapi-secrets
+          volumeMounts:
+            - name: gokapi-config
+              mountPath: /app/config
+            - name: gokapi-data
+              mountPath: /app/data
+            - name: gokapi-static
+              mountPath: /app/static
+            - name: gokapi-templates
+              mountPath: /app/templates
+
+      volumes:
+        - name: gokapi-config
+          configMap:
+            name: gokapi-config
+        - name: gokapi-data
+          persistentVolumeClaim:
+            claimName: gokapi-data-pvc
+        - name: gokapi-static
+          persistentVolumeClaim:
+            claimName: gokapi-static-pvc
+        - name: gokapi-templates
+          persistentVolumeClaim:
+            claimName: gokapi-templates-pvc

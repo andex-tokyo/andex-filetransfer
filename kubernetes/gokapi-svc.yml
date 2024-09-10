@@ -1,0 +1,13 @@
+# gokapi-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: gokapi-service
+spec:
+  type: NodePort
+  selector:
+    app: gokapi
+  ports:
+    - port: 53842  # コンテナ内でリッスンするポート
+      targetPort: 53842  # コンテナ内のポート
+      nodePort: 30042  # NodePortとして外部に公開するポート（範囲: 30000-32767）

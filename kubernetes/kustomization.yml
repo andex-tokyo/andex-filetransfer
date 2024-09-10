@@ -1,0 +1,6 @@
+resources:
+  - gokapi-deployment.yml
+  - gokapi-configmap.yml
+  - gokapi-pvc.yml
+  - gokapi-svc.yml
+
