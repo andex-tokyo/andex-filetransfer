@@ -1,18 +1,23 @@
 version: '3'
 services:
   gokapi:
-    image: f0rc3/gokapi:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: gokapi
     volumes:
       - gokapi-data:/app/data
-      - ./gokapi-config:/app/config  # gokapi-config フォルダをマウント
-      - ./static:/app/static         # static フォルダをマウント
-      - ./templates:/app/templates   # templates フォルダをマウント
+      - ./gokapi-config:/app/config
+      - ./static:/app/static
+      - ./templates:/app/templates
     ports:
       - "127.0.0.1:53842:53842"
     environment:
-      - TZ=Azia/Tokyo
+      - TZ=Asia/Tokyo
     restart: unless-stopped
+    # remove comment out for local
+    env_file:
+      - .env
 
 volumes:
   gokapi-data:
