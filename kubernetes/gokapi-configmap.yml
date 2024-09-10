@@ -33,7 +33,7 @@ data:
       },
       "Port": ":53842",
       "ServerUrl": "https://file.andex.tokyo/",
-      "RedirectUrl": "https:/andex.tokyo/",
+      "RedirectUrl": "/admin",
       "PublicName": "andex File Transer",
       "DataDir": "data",
       "DatabaseUrl": "sqlite://./data/gokapi.sqlite",
