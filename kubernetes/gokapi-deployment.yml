@@ -40,8 +40,6 @@ spec:
           image: f0rc3/gokapi:latest
           ports:
             - containerPort: 53842
-              hostPort: 53842
-              hostIP: 127.0.0.1
           envFrom:
             - secretRef:
                 name: gokapi-secrets
