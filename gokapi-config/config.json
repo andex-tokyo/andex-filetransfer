@@ -1,0 +1,42 @@
+{
+  "Authentication": {
+    "Method": 0,
+    "SaltAdmin": "",
+    "SaltFiles": "",
+    "Username": "",
+    "Password": "",
+    "HeaderKey": "",
+    "OauthProvider": "",
+    "OAuthClientId": "",
+    "OAuthClientSecret": "",
+    "OauthUserScope": "",
+    "OauthGroupScope": "",
+    "OAuthRecheckInterval": 12,
+    "HeaderUsers": null,
+    "OAuthGroups": [],
+    "OauthUsers": []
+  },
+  "Port": ":53842",
+  "ServerUrl": "https://file.andex.tokyo/",
+  "RedirectUrl": "https:/andex.tokyo/",
+  "PublicName": "andex File Transer",
+  "DataDir": "data",
+  "DatabaseUrl": "sqlite://./data/gokapi.sqlite",
+  "ConfigVersion": 21,
+  "LengthId": 15,
+  "MaxFileSizeMB": 102400,
+  "MaxMemory": 50,
+  "ChunkSize": 45,
+  "MaxParallelUploads": 4,
+  "Encryption": {
+    "Level": 0,
+    "Cipher": null,
+    "Salt": "",
+    "Checksum": "",
+    "ChecksumSalt": ""
+  },
+  "UseSsl": false,
+  "PicturesAlwaysLocal": false,
+  "SaveIp": false,
+  "IncludeFilename": false
+}

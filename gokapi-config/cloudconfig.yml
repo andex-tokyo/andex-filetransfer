@@ -1,0 +1,7 @@
+aws:
+  Bucket: andex-file-transfer
+  Region: ap-northeast-1
+  KeyId:
+  KeySecret:
+  Endpoint: ""
+  ProxyDownload: false

@@ -1,0 +1,18 @@
+version: '3'
+services:
+  gokapi:
+    image: f0rc3/gokapi:latest
+    container_name: gokapi
+    volumes:
+      - gokapi-data:/app/data
+      - ./gokapi-config:/app/config  # gokapi-config フォルダをマウント
+      - ./static:/app/static         # static フォルダをマウント
+      - ./templates:/app/templates   # templates フォルダをマウント
+    ports:
+      - "127.0.0.1:53842:53842"
+    environment:
+      - TZ=UTC
+    restart: unless-stopped
+
+volumes:
+  gokapi-data:
