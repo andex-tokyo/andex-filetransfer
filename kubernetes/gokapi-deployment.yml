@@ -39,6 +39,7 @@ spec:
           command: ["/bin/sh", "-c"]
           args:
             - |
+              apk add --no-cache gettext &&
               envsubst < /config-tmpl/cloudconfig.yml.template > /app/config/cloudconfig.yml &&
               envsubst < /config-tmpl/config.json.template > /app/config/config.json;
           envFrom:
