@@ -39,13 +39,15 @@ spec:
           command: ["/bin/sh", "-c"]
           args:
             - |
-              envsubst < /app/config/cloudconfig.yml.template > /app/config/cloudconfig.yml &&
-              envsubst < /app/config/config.json.template > /app/config/config.json;
+              envsubst < /config-tmpl/cloudconfig.yml.template > /app/config/cloudconfig.yml &&
+              envsubst < /config-tmpl/config.json.template > /app/config/config.json;
           envFrom:
             - secretRef:
                 name: gokapi-secrets
           volumeMounts:
-            - name: gokapi-config
+            - name: config-tmpl
+              mountPath: /config-tmpl
+            - name: config-output
               mountPath: /app/config
 
       containers:
@@ -57,7 +59,7 @@ spec:
             - secretRef:
                 name: gokapi-secrets
           volumeMounts:
-            - name: gokapi-config
+            - name: config-output
               mountPath: /app/config
             - name: gokapi-data
               mountPath: /app/data
@@ -67,7 +69,7 @@ spec:
               mountPath: /app/templates
 
       volumes:
-        - name: gokapi-config
+        - name: config-tmpl
           configMap:
             name: gokapi-config
         - name: gokapi-data
@@ -79,3 +81,5 @@ spec:
         - name: gokapi-templates
           persistentVolumeClaim:
             claimName: gokapi-templates-pvc
+        - name: config-output
+          emptyDir: {}  # 書き込み可能な一時的なボリューム
