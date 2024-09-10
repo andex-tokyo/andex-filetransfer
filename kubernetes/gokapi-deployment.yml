@@ -18,7 +18,7 @@ spec:
           command: ["/bin/sh", "-c"]
           args:
             - |
-              git clone https://$(GITHUB_USERNAME):$(GITHUB_TOKEN)@github.com/your-username/your-repo.git /git-data &&
+              git clone https://$(GITHUB_USERNAME):$(GITHUB_TOKEN)@github.com/andex-tokyo/andex-filetransfer.git /git-data &&
               cp -r /git-data/static/* /app/static/ &&
               cp -r /git-data/templates/* /app/templates/
           env:
