@@ -11,7 +11,7 @@ services:
     ports:
       - "127.0.0.1:53842:53842"
     environment:
-      - TZ=UTC
+      - TZ=Azia/Tokyo
     restart: unless-stopped
 
 volumes:

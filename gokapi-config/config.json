@@ -1,10 +1,10 @@
 {
   "Authentication": {
     "Method": 0,
-    "SaltAdmin": "",
-    "SaltFiles": "",
-    "Username": "",
-    "Password": "",
+    "SaltAdmin": "${AUTH_SALT_ADMIN}",
+    "SaltFiles": "${AUTH_SALT_FILES}",
+    "Username": "${AUTH_USERNAME}",
+    "Password": "${AUTH_PASSWORD}",
     "HeaderKey": "",
     "OauthProvider": "",
     "OAuthClientId": "",

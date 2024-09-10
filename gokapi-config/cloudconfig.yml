@@ -1,7 +1,7 @@
 aws:
-  Bucket: andex-file-transfer
-  Region: ap-northeast-1
-  KeyId:
-  KeySecret:
+  Bucket: ${AWS_BUCKET}
+  Region: ${AWS_REGION}
+  KeyId: ${AWS_KEY_ID}
+  KeySecret: ${AWS_KEY_SECRET}
   Endpoint: ""
   ProxyDownload: false

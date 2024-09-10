@@ -1,0 +1,151 @@
+{{define "download"}}
+{{template "header" .}}
+ 
+      <div class="row">
+        <div class="col">
+		<div class="card" style="width: 18rem;">
+		  <div class="card-body">
+{{ if .EndToEndEncryption }}
+		    <h4 id="filename" class="card-title">Decrypting...</h4>
+{{ else }}
+		    <h4 id="filename" class="card-title">{{ .Name }}</h4>
+{{ end }}
+		    <p class="card-text">Filesize: {{ .Size }}</p><br>
+			<div id="buttondiv">
+{{ if .ClientSideDecryption }}
+			   <button id="downloadbutton" class="btn btn-light" type="button" disabled onclick="Download(this);">
+			  	<span id="wasmspinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+			  	Loading...
+			  </button>
+{{  else }}
+			   <button class="btn btn-light" type="button" onclick="Download(this);">
+			  	Download
+			  </button>
+{{ end }}
+			</div>
+			<div id="errordiv" style="display:none">
+				<span id="errormessage" style="color:red"></span>
+			</div>
+		  </div>
+		</div>
+	    </div>
+    </div>
+
+
+{{ if .ClientSideDecryption }}
+		<script src="./js/min/polyfill.min.js"></script>
+		<script src="./js/min/streamsaver.min.js"></script>
+		<script src="./js/min/wasm_exec.min.js"></script>
+		
+		
+		<script>
+{{ if .EndToEndEncryption }}
+		parseHashValue({{.Id}});
+{{ end }}
+		
+		const go = new Go(); // Defined in wasm_exec.js
+		const WASM_URL = 'main.wasm?v=1';
+
+		var wasm;
+
+		try {
+		    if ('instantiateStreaming' in WebAssembly) {
+			WebAssembly.instantiateStreaming(fetch(WASM_URL), go.importObject).then(function(obj) {
+			    wasm = obj.instance;
+			    go.run(wasm);
+			    document.getElementById("wasmspinner").style.display = "none";
+			    document.getElementById("downloadbutton").disabled = false;
+			    document.getElementById("downloadbutton").innerHTML = "Download";
+			})
+		    } else {
+			fetch(WASM_URL).then(resp =>
+			    resp.arrayBuffer()
+			).then(bytes =>
+			    WebAssembly.instantiate(bytes, go.importObject).then(function(obj) {
+				wasm = obj.instance;
+				go.run(wasm);
+				document.getElementById("wasmspinner").style.display = "none";
+				document.getElementById("downloadbutton").disabled = false;
+				document.getElementById("downloadbutton").innerHTML = "Download";
+			    })
+			)
+		    }
+		} catch (err) {
+		    displayError(err);
+		}
+
+
+		async function DownloadEncrypted() {
+		    try {
+{{ if .EndToEndEncryption }}
+			let key = sessionStorage.getItem("key-{{ .Id }}");
+			sessionStorage.removeItem("key-{{ .Id }}"); 
+			let filename = sessionStorage.getItem("fn-{{ .Id }}");
+			sessionStorage.removeItem("fn-{{ .Id }}"); 
+{{ else }}
+			let key = "{{ .Cipher }}";
+{{ end }}
+			const response  = await GokapiDecrypt(key, "./downloadFile?id={{ .Id }}");
+			if (response instanceof Error) {
+			    throw response;
+			}
+			
+			const readableStream = response.body;
+			const reader = response.body.getReader();
+{{ if .UsesHttps }}
+			streamSaver.mitm = './serviceworker/index.html';
+{{  else }}
+			console.log("Gokapi is not being accessed through https, therefore an external serviceworker will be used");
+			streamSaver.mitm = 'https://forceu.github.io/Gokapi/internal/webserver/web/static/serviceworker/index.html';
+{{  end }}
+{{ if .EndToEndEncryption }}
+			const fileStream = streamSaver.createWriteStream(filename);
+{{ else }}
+			const fileStream = streamSaver.createWriteStream({{.Name }});
+{{ end }}
+					     
+			window.writer = fileStream.getWriter();
+
+			const pump = () => reader.read()
+			    .then(res => res.done ?
+				writer.close() :
+				writer.write(res.value).then(pump))
+
+			pump();
+		    } catch (err) {
+			displayError(err);
+		    }
+		}
+
+		function displayError(err) {
+		    document.getElementById("buttondiv").style.display = "none";
+		    document.getElementById("errordiv").style.display = "block";
+		    document.getElementById("errormessage").innerHTML = "<b>Error: </b> " + err.toString().replace(/^Error:/gi, "");
+		    console.error('Caught exception', err)
+		}
+
+
+		function Download(button) {
+		    button.disabled = true;
+		    DownloadEncrypted();
+		}
+		</script>
+{{ else }}
+
+		<script> 
+		   function Download(button) {
+		     button.disabled = true;
+		     location.href = "./downloadFile?id={{ .Id }}";
+		   }   
+		</script>
+{{ end }}
+{{ if .EndToEndEncryption }}
+		<script> 
+			let filename = sessionStorage.getItem("fn-{{ .Id }}");
+			document.getElementById("filename").innerText = filename;
+			document.title = "{{.PublicName}}: "+ filename;
+		</script>
+{{ end }}
+
+{{template "footer"}}    
+{{end}}
