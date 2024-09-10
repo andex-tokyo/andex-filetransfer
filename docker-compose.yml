@@ -1,4 +1,4 @@
-version: '3'
+version: '3.1'
 services:
   gokapi:
     build:
@@ -16,8 +16,8 @@ services:
       - TZ=Asia/Tokyo
     restart: unless-stopped
     # remove comment out for local
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
 
 volumes:
   gokapi-data:
