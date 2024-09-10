@@ -34,6 +34,19 @@ spec:
               mountPath: /app/static
             - name: gokapi-templates
               mountPath: /app/templates
+        - name: generate-config
+          image: alpine:latest
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              envsubst < /app/config/cloudconfig.yml > /app/config/cloudconfig.yml &&
+              envsubst < /app/config/config.json > /app/config/config.json;
+          envFrom:
+            - secretRef:
+                name: gokapi-secrets
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config
 
       containers:
         - name: gokapi
