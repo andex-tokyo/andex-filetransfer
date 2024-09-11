@@ -6,11 +6,11 @@ metadata:
 data:
   cloudconfig.yml.template: |
     aws:
-      Bucket: ${AWS_BUCKET}
-      Region: ${AWS_REGION}
-      KeyId: ${AWS_KEY_ID}
-      KeySecret: ${AWS_KEY_SECRET}
-      Endpoint: ""
+      Bucket: ${R2_BUCKET}
+      Region: ${R2_REGION}
+      KeyId: ${R2_KEY_ID}
+      KeySecret: ${R2_KEY_SECRET}
+      Endpoint: "https://5d9c68bca6f685d588240bfb6bc7ec79.r2.cloudflarestorage.com"
       ProxyDownload: false
   config.json.template: |
     {
