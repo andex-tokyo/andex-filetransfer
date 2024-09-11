@@ -8,15 +8,7 @@
 .btn-secondary:focus {
   color: #333;
   text-shadow: none;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px 20px;
-  transition: background-color 0.3s;
-}
-
-.btn-secondary:hover {
-  background-color: #e0e0e0;
+  /* Prevent inheritance from `body` */
 }
 
 /*
@@ -24,80 +16,67 @@
  */
 
 body {
-  background: #fff;
-  /* 背景を白に設定 */
+  background: url("../../assets/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: -ms-flexbox;
+  display: -webkit-box;
   display: flex;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  color: #333;
-  margin: 0;
 }
 
 td {
   vertical-align: middle;
   position: relative;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
 }
 
 a {
-  color: #555;
-  /* 青文字をグレーに変更 */
-  text-decoration: none;
+  color: inherit;
 }
 
 a:hover {
-  color: #333;
-  /* ホバー時の色も変更 */
-  text-decoration: underline;
+  color: inherit;
+  filter: brightness(80%);
 }
 
 .dropzone {
-  background: #f8f9fa !important;
-  color: #333;
-  border: 2px dashed #ccc;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  transition: background-color 0.3s;
+  background: rgb(47, 52, 58) !important;
+  color: #ffffff;
+  border-radius: 5px;
 }
 
 .dropzone:hover {
-  background: #e9ecef !important;
+  background: rgb(51, 57, 63) !important;
+  color: #ffffff;
+  border-radius: 5px;
 }
 
 .card {
   margin: 0 auto;
   float: none;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgb(51, 57, 63);
 }
 
 .card-body {
-  background-color: #fff;
-  color: #333;
-  padding: 20px;
+  background-color: rgb(33, 37, 41);
+  color: #ddd;
 }
 
 .card-title {
-  font-weight: 700;
-  font-size: 1.5rem;
+  font-weight: 900;
 }
 
 .admin-input {
   text-align: center;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
 .form-control:disabled {
-  background: #e9ecef;
-  color: #6c757d;
+  background: #bababa;
 }
 
 .break {
@@ -108,6 +87,8 @@ a:hover {
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
   user-select: none;
 }
 
@@ -117,7 +98,7 @@ a:hover {
   }
 
   .break {
-    flex-basis: 0;
+    flex-basis: 0%;
   }
 }
 
@@ -127,29 +108,23 @@ a:hover {
 
 .masthead {
   margin-bottom: 2rem;
-  text-align: center;
 }
 
 .masthead-brand {
   margin-bottom: 0;
-  font-size: 1.5rem;
-  font-weight: 700;
 }
 
 .nav-masthead .nav-link {
   padding: 0.25rem 0;
   font-weight: 700;
-  color: #555;
-  /* 青文字をグレーに変更 */
+  color: rgba(255, 255, 255, 0.5);
   background-color: transparent;
   border-bottom: 0.25rem solid transparent;
-  transition: border-bottom-color 0.3s;
 }
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: #333;
-  /* ホバー時の色も変更 */
+  border-bottom-color: rgba(255, 255, 255, 0.25);
 }
 
 .nav-masthead .nav-link+.nav-link {
@@ -157,10 +132,10 @@ a:hover {
 }
 
 .nav-masthead .active {
-  color: #333;
-  /* アクティブ時の色も変更 */
-  border-bottom-color: #333;
+  color: #fff;
+  border-bottom-color: #fff;
 }
+
 
 #qroverlay {
   display: none;
@@ -176,10 +151,11 @@ a:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: -105px;
+  margin-left: -105px;
   width: 210px;
   height: 210px;
-  border: 5px solid #fff;
+  border: 5px solid #ffffff;
 }
 
 .toastnotification {
@@ -218,9 +194,6 @@ a:hover {
 }
 
 .gokapi-dialog {
-  background-color: #fff;
-  color: #333;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #212529;
+  color: #ddd;
 }
