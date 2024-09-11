@@ -1,147 +1,125 @@
-body {
-  background: #fff;
-  /* 背景を白に設定 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  color: #333;
-  margin: 0;
-}
-
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
   color: #333;
-  text-shadow: none;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px 20px;
-  transition: background-color 0.3s;
+  text-shadow: none
 }
 
-.btn-secondary:hover {
-  background-color: #e0e0e0;
+body {
+  background: url(../../assets/background.jpg)no-repeat 50% fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+  justify-content: center
 }
 
 td {
   vertical-align: middle;
-  position: relative;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+  position: relative
 }
 
 a {
-  color: #007bff;
-  text-decoration: none;
+  color: inherit
 }
 
 a:hover {
-  color: #0056b3;
-  text-decoration: underline;
+  color: inherit;
+  filter: brightness(80%)
 }
 
 .dropzone {
-  background: #f8f9fa !important;
-  color: #333;
-  border: 2px dashed #ccc;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  transition: background-color 0.3s;
+  background: #2f343a !important;
+  color: #fff;
+  border-radius: 5px
 }
 
 .dropzone:hover {
-  background: #e9ecef !important;
+  background: #33393f !important;
+  color: #fff;
+  border-radius: 5px
 }
 
 .card {
   margin: 0 auto;
   float: none;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid #33393f
 }
 
 .card-body {
-  background-color: #fff;
-  color: #333;
-  padding: 20px;
+  background-color: #212529;
+  color: #ddd
 }
 
 .card-title {
-  font-weight: 700;
-  font-size: 1.5rem;
+  font-weight: 900
 }
 
 .admin-input {
-  text-align: center;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  text-align: center
 }
 
 .form-control:disabled {
-  background: #e9ecef;
-  color: #6c757d;
+  background: #bababa
 }
 
 .break {
   flex-basis: 100%;
-  height: 0;
+  height: 0
 }
 
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
-  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none
 }
 
 @media(min-width:768px) {
   .bd-placeholder-img-lg {
-    font-size: 3.5rem;
+    font-size: 3.5rem
   }
 
   .break {
-    flex-basis: 0;
+    flex-basis: 0
   }
 }
 
 .masthead {
-  margin-bottom: 2rem;
-  text-align: center;
+  margin-bottom: 2rem
 }
 
 .masthead-brand {
-  margin-bottom: 0;
-  font-size: 1.5rem;
-  font-weight: 700;
+  margin-bottom: 0
 }
 
 .nav-masthead .nav-link {
   padding: .25rem 0;
   font-weight: 700;
-  color: #007bff;
+  color: rgba(255, 255, 255, .5);
   background-color: initial;
-  border-bottom: .25rem solid transparent;
-  transition: border-bottom-color 0.3s;
+  border-bottom: .25rem solid transparent
 }
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: #0056b3;
+  border-bottom-color: rgba(255, 255, 255, .25)
 }
 
 .nav-masthead .nav-link+.nav-link {
-  margin-left: 1rem;
+  margin-left: 1rem
 }
 
 .nav-masthead .active {
-  color: #0056b3;
-  border-bottom-color: #0056b3;
+  color: #fff;
+  border-bottom-color: #fff
 }
 
 #qroverlay {
@@ -151,17 +129,18 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, .3)
 }
 
 #qrcode {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: -105px;
+  margin-left: -105px;
   width: 210px;
   height: 210px;
-  border: 5px solid #fff;
+  border: 5px solid #fff
 }
 
 .toastnotification {
@@ -177,45 +156,42 @@ a:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
   opacity: 0;
   transition: opacity .3s ease-in-out;
-  z-index: 9999;
+  z-index: 9999
 }
 
 .toastnotification.show {
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: auto
 }
 
 .apiperm-granted {
   cursor: pointer;
-  color: #19b90e;
+  color: #19b90e
 }
 
 .apiperm-notgranted {
   cursor: pointer;
-  color: #7e7e7e;
+  color: #7e7e7e
 }
 
 .apiperm-processing {
-  color: #929611;
+  color: #929611
 }
 
 .gokapi-dialog {
-  background-color: #fff;
-  color: #333;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #212529;
+  color: #ddd
 }
 
 .filename {
   font-weight: 700;
   font-size: 14px;
-  margin-bottom: 5px;
+  margin-bottom: 5px
 }
 
 .upload-progress-container {
   display: flex;
-  align-items: center;
+  align-items: center
 }
 
 .upload-progress-bar {
@@ -224,7 +200,7 @@ a:hover {
   background-color: #eee;
   flex: 1;
   margin-right: 10px;
-  border-radius: 4px;
+  border-radius: 4px
 }
 
 .upload-progress-bar-progress {
@@ -234,30 +210,30 @@ a:hover {
   height: 100%;
   background-color: #0a0;
   border-radius: 4px;
-  transition: width .2s ease-in-out;
+  transition: width .2s ease-in-out
 }
 
 .upload-progress-info {
-  font-size: 12px;
+  font-size: 12px
 }
 
 .us-container {
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 20px
 }
 
 .uploaderror {
   font-weight: 700;
   color: red;
-  margin-bottom: 5px;
+  margin-bottom: 5px
 }
 
 .uploads-container {
-  background-color: #f8f9fa;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  background-color: #2f343a;
+  border: 2px solid rgba(0, 0, 0, .3);
+  border-radius: 5px;
   margin-left: 0;
   margin-right: 0;
   max-width: none;
-  visibility: hidden;
+  visibility: hidden
 }

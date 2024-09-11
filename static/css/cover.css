@@ -43,12 +43,14 @@ td {
 }
 
 a {
-  color: #007bff;
+  color: #555;
+  /* 青文字をグレーに変更 */
   text-decoration: none;
 }
 
 a:hover {
-  color: #0056b3;
+  color: #333;
+  /* ホバー時の色も変更 */
   text-decoration: underline;
 }
 
@@ -137,7 +139,8 @@ a:hover {
 .nav-masthead .nav-link {
   padding: 0.25rem 0;
   font-weight: 700;
-  color: #007bff;
+  color: #555;
+  /* 青文字をグレーに変更 */
   background-color: transparent;
   border-bottom: 0.25rem solid transparent;
   transition: border-bottom-color 0.3s;
@@ -145,7 +148,8 @@ a:hover {
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: #0056b3;
+  border-bottom-color: #333;
+  /* ホバー時の色も変更 */
 }
 
 .nav-masthead .nav-link+.nav-link {
@@ -153,8 +157,9 @@ a:hover {
 }
 
 .nav-masthead .active {
-  color: #0056b3;
-  border-bottom-color: #0056b3;
+  color: #333;
+  /* アクティブ時の色も変更 */
+  border-bottom-color: #333;
 }
 
 #qroverlay {
