@@ -3,4 +3,6 @@ resources:
   - gokapi-configmap.yml
   - gokapi-pvc.yml
   - gokapi-svc.yml
+  - sealed-github-credentials.yml
+  - sealed-gokapi-secrets.yml
 
