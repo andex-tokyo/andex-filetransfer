@@ -2,9 +2,8 @@
   "extends": ["config:base"],
   "packageRules": [
     {
-      "matchDatasources": ["github-tags"],
-      "matchPackageNames": ["Forceu/Gokapi"],
-      "versioning": "semver"
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["f0rc3/gokapi"]
     }
   ]
 }

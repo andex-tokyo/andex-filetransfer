@@ -1,0 +1,8 @@
+resources:
+  - gokapi-deployment.yaml
+  - gokapi-configmap.yaml
+  - gokapi-pvc.yaml
+  - gokapi-svc.yaml
+  - sealed-github-credentials.yaml
+  - sealed-gokapi-secrets.yaml
+
