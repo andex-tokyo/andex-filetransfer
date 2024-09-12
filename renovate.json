@@ -1,9 +1,12 @@
 {
-  "extends": ["config:base"],
+  "extends": [
+    "config:base"
+  ],
   "packageRules": [
     {
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["f0rc3/gokapi"]
+      "matchDatasources": ["github-tags"],
+      "matchPackageNames": ["Forceu/Gokapi"],
+      "fileMatch": ["kubernetes/gokapi-deployment.yaml"]
     }
   ]
 }
