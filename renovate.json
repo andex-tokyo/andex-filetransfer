@@ -2,13 +2,16 @@
   "extends": [
     "config:base"
   ],
-  "packageRules": [
+  "regexManagers": [
     {
-      "matchDatasources": ["github-tags"],
-      "matchPackageNames": ["Forceu/Gokapi"]
+      "fileMatch": ["kubernetes/gokapi-deployment.yaml"],
+      "matchStrings": [
+        "image: f0rc3/gokapi:v(?<currentValue>.*)"
+      ],
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "Forceu/Gokapi",
+      "versioningTemplate": "semver"
     }
   ],
-  "docker": {
-    "fileMatch": ["kubernetes/gokapi-deployment.yaml"]
-  }
+  "assignees": ["andex-tokyo"]
 }
