@@ -5,8 +5,10 @@
   "packageRules": [
     {
       "matchDatasources": ["github-tags"],
-      "matchPackageNames": ["Forceu/Gokapi"],
-      "fileMatch": ["kubernetes/gokapi-deployment.yaml"]
+      "matchPackageNames": ["Forceu/Gokapi"]
     }
-  ]
+  ],
+  "docker": {
+    "fileMatch": ["kubernetes/gokapi-deployment.yaml"]
+  }
 }
