@@ -54,7 +54,7 @@ spec:
 
       containers:
         - name: gokapi
-          image: f0rc3/gokapi:v1.9.0
+          image: f0rc3/gokapi:v1.9.1
           ports:
             - containerPort: 53842
           envFrom:
