@@ -54,7 +54,7 @@ spec:
 
       containers:
         - name: gokapi
-          image: f0rc3/gokapi:latest
+          image: f0rc3/gokapi:v1.9.0
           ports:
             - containerPort: 53842
           envFrom:
@@ -84,4 +84,4 @@ spec:
           persistentVolumeClaim:
             claimName: gokapi-templates-pvc
         - name: config-output
-          emptyDir: {}  # 書き込み可能な一時的なボリューム
+          emptyDir: {}

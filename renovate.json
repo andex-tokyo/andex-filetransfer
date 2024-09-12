@@ -1,0 +1,10 @@
+{
+  "extends": ["config:base"],
+  "packageRules": [
+    {
+      "matchDatasources": ["github-tags"],
+      "matchPackageNames": ["Forceu/Gokapi"],
+      "versioning": "semver"
+    }
+  ]
+}
